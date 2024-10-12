@@ -20,8 +20,10 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::paginate(20);
-        return view('pokemon.index', compact('pokemons'));
+        // $pokemons = Pokemon::paginate(20);
+        // return view('pokemon.index', compact('pokemons'));
+        $pokemons = Pokemon::paginate(9); // Tampilkan 9 Pokémon per halaman
+        return view('home', compact('pokemons'));
     }
 
     /**
