@@ -2,18 +2,36 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $pokemon->name }}</h1>
-
         <div class="card">
-            <img src="{{ $pokemon->photo ? asset('storage/' . $pokemon->photo) : 'https://placehold.co/200' }}"
-                class="card-img-top" alt="{{ $pokemon->name }}">
+            <div class="card-header">
+                <h1>Detail Pokémon</h1>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">#{{ str_pad($pokemon->id, 4, '0', STR_PAD_LEFT) }} - {{ $pokemon->name }}</h5>
-                <p>Species: {{ $pokemon->species }}</p>
-                <p>Type: {{ $pokemon->primary_type }}</p>
-                <p>Weight: {{ $pokemon->weight }} kg</p>
-                <p>Height: {{ $pokemon->height }} m</p>
-                <p>Power: HP: {{ $pokemon->hp }}, Attack: {{ $pokemon->attack }}, Defense: {{ $pokemon->defense }}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Menampilkan foto Pokémon -->
+                        @if ($pokemon->photo)
+                            <img src="{{ asset('storage/' . $pokemon->photo) }}" alt="{{ $pokemon->name }}" class="img-fluid">
+                        @else
+                            <img src="https://placehold.co/200" alt="No Image Available" class="img-fluid">
+                        @endif
+                    </div>
+                    <div class="col-md-8">
+                        <h3>#{{ str_pad($pokemon->id, 4, '0', STR_PAD_LEFT) }} {{ $pokemon->name }}</h3>
+                        <p><strong>Species:</strong> {{ $pokemon->species }}</p>
+                        <p><strong>Primary Type:</strong> <span class="badge bg-success">{{ $pokemon->primary_type }}</span>
+                        </p>
+                        <p><strong>Weight:</strong> {{ $pokemon->weight }} kg</p>
+                        <p><strong>Height:</strong> {{ $pokemon->height }} m</p>
+                        <p><strong>HP:</strong> {{ $pokemon->hp }}</p>
+                        <p><strong>Attack:</strong> {{ $pokemon->attack }}</p>
+                        <p><strong>Defense:</strong> {{ $pokemon->defense }}</p>
+                        <p><strong>Legendary:</strong> {{ $pokemon->is_legendary ? 'Yes' : 'No' }}</p>
+                    </div>
+                </div>
+
+                <!-- Tombol kembali ke halaman index -->
+                <a href="{{ route('pokemon.index') }}" class="btn btn-secondary mt-4">Back to List</a>
             </div>
         </div>
     </div>
