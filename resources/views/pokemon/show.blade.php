@@ -9,7 +9,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <!-- Menampilkan foto Pokémon -->
                         @if ($pokemon->photo)
                             <img src="{{ asset('storage/' . $pokemon->photo) }}" alt="{{ $pokemon->name }}" class="img-fluid">
                         @else
@@ -30,7 +29,6 @@
                     </div>
                 </div>
 
-                <!-- Tombol kembali ke halaman index -->
                 <a href="{{ route('pokemon.index') }}" class="btn btn-secondary mt-4">Back to List</a>
             </div>
         </div>
