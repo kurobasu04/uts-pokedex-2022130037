@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Detail Pokémon</h1>
+                <h1>Detail Pokemon</h1>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -15,7 +15,7 @@
                             <img src="https://placehold.co/200" alt="No Image Available" class="img-fluid">
                         @endif
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 text-start"> <!-- text-start untuk rata kiri -->
                         <h3>#{{ str_pad($pokemon->id, 4, '0', STR_PAD_LEFT) }} {{ $pokemon->name }}</h3>
                         <p><strong>Species:</strong> {{ $pokemon->species }}</p>
                         <p><strong>Primary Type:</strong> <span class="badge bg-success">{{ $pokemon->primary_type }}</span>
