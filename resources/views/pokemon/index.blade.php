@@ -26,16 +26,16 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($pokemons as $pokemon)
+            @foreach ($pokemon as $poke)
                 <tr>
-                    <td>{{ str_pad($pokemon->id, 4, '0', STR_PAD_LEFT) }}</td>
-                    <td>{{ $pokemon->name }}</td>
-                    <td>{{ $pokemon->species }}</td>
-                    <td>{{ $pokemon->primary_type }}</td>
-                    <td>{{ $pokemon->hp + $pokemon->attack + $pokemon->defense }}</td>
+                    <td>{{ str_pad($poke->id, 4, '0', STR_PAD_LEFT) }}</td>
+                    <td>{{ $poke->name }}</td>
+                    <td>{{ $poke->species }}</td>
+                    <td>{{ $poke->primary_type }}</td>
+                    <td>{{ $poke->hp + $poke->attack + $poke->defense }}</td>
                     <td>
-                        <a href="{{ route('pokemon.edit', $pokemon->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('pokemon.destroy', $pokemon->id) }}" method="POST"
+                        <a href="{{ route('pokemon.edit', $poke->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('pokemon.destroy', $poke->id) }}" method="POST"
                             style="display:inline-block;">
                             @csrf
                             @method('DELETE')
@@ -47,5 +47,5 @@
         </tbody>
     </table>
 
-    {{ $pokemons->links() }}
+    {{ $pokemon->links() }}
 @endsection

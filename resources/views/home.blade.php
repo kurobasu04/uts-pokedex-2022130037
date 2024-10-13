@@ -28,26 +28,24 @@
             </div>
 
             <div class="row">
-                @foreach ($pokemons as $pokemon)
+                @foreach ($pokemon as $poke)
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <!-- Menampilkan gambar Pokémon, jika kosong menggunakan placeholder -->
-                            <a href="{{ route('pokemon.show', $pokemon->id) }}">
-                                <img src="{{ $pokemon->image_url ?? 'https://placehold.co/200' }}" class="card-img-top"
-                                    alt="{{ $pokemon->name }}">
+
+                            <a href="{{ route('pokemon.show', $poke->id) }}">
+                                <img src="{{ $poke->photo ?? 'https://placehold.co/200' }}" class="card-img-top"
+                                    alt="{{ $poke->name }}">
                             </a>
                             <div class="card-body">
-                                <!-- Menampilkan ID Pokémon dengan format padding -->
+
                                 <h5 class="card-title">
-                                    <a href="{{ route('pokemon.show', $pokemon->id) }}">
-                                        {{ str_pad($pokemon->id, 4, '0', STR_PAD_LEFT) }} - {{ $pokemon->name }}
+                                    <a href="{{ route('pokemon.show', $poke->id) }}">
+                                        {{ str_pad($poke->id, 4, '0', STR_PAD_LEFT) }} - {{ $poke->name }}
                                     </a>
                                 </h5>
                                 <p class="card-text">
-                                    <!-- Menampilkan tipe Pokémon dalam bentuk pill badges -->
-                                    @foreach (explode('/', $pokemon->type) as $type)
-                                        <span class="badge rounded-pill bg-primary">{{ $type }}</span>
-                                    @endforeach
+                                    <!-- Menampilkan primary_type -->
+                                    <span class="badge rounded-pill bg-primary">{{ $poke->primary_type }}</span>
                                 </p>
                             </div>
                         </div>
@@ -58,7 +56,7 @@
 
         <!-- Pagination -->
         <div class="d-flex justify-content-center mt-4">
-            {{ $pokemons->links() }}
+            {{ $pokemon->links() }}
         </div>
     </div>
 @endsection

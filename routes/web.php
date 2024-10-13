@@ -5,25 +5,15 @@ use App\Http\Controllers\PokemonController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('home');
-// })->name('home');
-
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Route::resource('/pokemon', PokemonController::class);
-
-// Route::get('/', PokedexController::class)->name('home');
-
-// Route root diarahkan ke PokedexController
+// Route dashboard with PokedexController (__invoke)
 Route::get('/', PokedexController::class)->name('home');
 
-// Resource untuk route Pokémon (CRUD)
+// Route CRUD
 Route::resource('/pokemon', PokemonController::class);
 
-Route::get('/home', function() {
+// Redirect /home to dashboard '/'
+Route::get('/home', function () {
     return redirect()->route('home');
 });
-

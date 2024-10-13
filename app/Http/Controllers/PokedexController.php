@@ -12,8 +12,9 @@ class PokedexController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $pokemons = Pokemon::paginate(9);
+        $pokemon = Pokemon::paginate(9);
 
-        return view('home', ['pokemons' => $pokemons]);
+        // send data to view 'home'
+        return view('home', compact('pokemon'));
     }
 }
