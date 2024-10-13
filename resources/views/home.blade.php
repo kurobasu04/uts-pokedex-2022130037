@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="text-center mb-4">
-            <h1>Pokédex</h1>
-            <p>Explore all Pokémon</p>
+            <h1>POKEMON LOVERS</h1>
+            <p>Explore The Pokemon</p>
         </div>
 
         <div class="row justify-content-center">
@@ -27,36 +27,38 @@
                 </div>
             </div>
 
-            <div class="row">
-                @foreach ($pokemon as $poke)
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-
-                            <a href="{{ route('pokemon.show', $poke->id) }}">
-                                <img src="{{ $poke->photo ?? 'https://placehold.co/200' }}" class="card-img-top"
-                                    alt="{{ $poke->name }}">
-                            </a>
-                            <div class="card-body">
-
-                                <h5 class="card-title">
-                                    <a href="{{ route('pokemon.show', $poke->id) }}">
-                                        {{ str_pad($poke->id, 4, '0', STR_PAD_LEFT) }} - {{ $poke->name }}
-                                    </a>
-                                </h5>
-                                <p class="card-text">
-                                    <!-- Menampilkan primary_type -->
-                                    <span class="badge rounded-pill bg-primary">{{ $poke->primary_type }}</span>
-                                </p>
+            <!-- Cek jika pokemon kosong -->
+            @if ($pokemon->isEmpty())
+                <p class="text-center">No Pokémon found.</p>
+            @else
+                <div class="row">
+                    @foreach ($pokemon as $poke)
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <a href="{{ route('pokemon.show', $poke->id) }}">
+                                    <img src="{{ $poke->photo ?? 'https://placehold.co/200' }}" class="card-img-top"
+                                        alt="{{ $poke->name }}">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="{{ route('pokemon.show', $poke->id) }}">
+                                            {{ str_pad($poke->id, 4, '0', STR_PAD_LEFT) }} - {{ $poke->name }}
+                                        </a>
+                                    </h5>
+                                    <p class="card-text">
+                                        <span class="badge rounded-pill bg-primary">{{ $poke->primary_type }}</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
 
         <!-- Pagination -->
         <div class="d-flex justify-content-center mt-4">
-            {{ $pokemon->links() }}
+            {{ $pokemon->links('pagination::bootstrap-5') }}
         </div>
     </div>
 @endsection

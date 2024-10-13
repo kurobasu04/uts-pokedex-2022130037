@@ -9,7 +9,7 @@
     </div>
 
     @if (session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mt-4">
             {{ session('success') }}
         </div>
     @endif
@@ -35,8 +35,7 @@
                     <td>{{ $poke->hp + $poke->attack + $poke->defense }}</td>
                     <td>
                         <a href="{{ route('pokemon.edit', $poke->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('pokemon.destroy', $poke->id) }}" method="POST"
-                            style="display:inline-block;">
+                        <form action="{{ route('pokemon.destroy', $poke->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>

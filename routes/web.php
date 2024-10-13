@@ -7,13 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route dashboard with PokedexController (__invoke)
+// Route home with __invoke
 Route::get('/', PokedexController::class)->name('home');
 
-// Route CRUD
-Route::resource('/pokemon', PokemonController::class);
+// Route index Pokemon
+Route::get('/pokemon', [PokemonController::class, 'index'])->name('pokemon.index');
 
-// Redirect /home to dashboard '/'
-Route::get('/home', function () {
-    return redirect()->route('home');
-});
+// Route CRUD
+Route::resource('pokemon', PokemonController::class)->except(['index']);
