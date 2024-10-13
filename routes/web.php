@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Route home with __invoke
-Route::get('/', PokedexController::class)->name('home');
+Route::get('/', PokedexController::class, '__invoke')->name('home');
 
 // Route index Pokemon
-Route::get('/pokemon', [PokemonController::class, 'index'])->name('pokemon.index');
+Route::get('/pokemon', [PokemonController::class, '__invoke'])->name('pokemon.index');
 
 // Route CRUD
 Route::resource('pokemon', PokemonController::class)->except(['index']);
