@@ -47,7 +47,7 @@
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <label for="primary_type" class="form-label">Primary Type</label>
-                                    <select class="form-control" id="primary_type" name="primary_type" required>
+                                    <select class="form-select" id="primary_type" name="primary_type" required>
                                         @foreach (['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Fighting', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'] as $type)
                                             <option value="{{ $type }}"
                                                 {{ old('primary_type', $pokemon->primary_type) == $type ? 'selected' : '' }}>
@@ -59,6 +59,52 @@
                                 <div class="col-md-6">
                                     <label for="photo" class="form-label">Photo</label>
                                     <input type="file" class="form-control" id="photo" name="photo">
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="weight" class="form-label">Weight</label>
+                                    <input type="number" class="form-control" id="weight" name="weight"
+                                        placeholder="Weight in kg" required value="{{ old('weight', $pokemon->weight) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="height" class="form-label">Height</label>
+                                    <input type="number" class="form-control" id="height" name="height"
+                                        placeholder="Height in m" required value="{{ old('height', $pokemon->height) }}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="hp" class="form-label">HP</label>
+                                    <input type="number" class="form-control" id="hp" name="hp"
+                                        placeholder="Hit Points" required value="{{ old('hp', $pokemon->hp) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="attack" class="form-label">Attack</label>
+                                    <input type="number" class="form-control" id="attack" name="attack"
+                                        placeholder="Attack Points" required value="{{ old('attack', $pokemon->attack) }}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="defense" class="form-label">Defense</label>
+                                    <input type="number" class="form-control" id="defense" name="defense"
+                                        placeholder="Defense Points" required
+                                        value="{{ old('defense', $pokemon->defense) }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="is_legendary" class="form-label">Legendary</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="is_legendary"
+                                            name="is_legendary" value="1"
+                                            {{ old('is_legendary', $pokemon->is_legendary) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="is_legendary">
+                                            Legendary Pokemon?
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
 

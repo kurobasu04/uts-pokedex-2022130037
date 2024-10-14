@@ -59,6 +59,51 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="weight" class="form-label">Weight</label>
+                                    <input type="number" class="form-control" id="weight" name="weight"
+                                        placeholder="Weight in kg" required value="{{ old('weight') }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="height" class="form-label">Height</label>
+                                    <input type="number" class="form-control" id="height" name="height"
+                                        placeholder="Height in m" required value="{{ old('height') }}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="hp" class="form-label">HP</label>
+                                    <input type="number" class="form-control" id="hp" name="hp"
+                                        placeholder="Hit Points" required value="{{ old('hp') }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="attack" class="form-label">Attack</label>
+                                    <input type="number" class="form-control" id="attack" name="attack"
+                                        placeholder="Attack Points" required value="{{ old('attack') }}">
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="defense" class="form-label">Defense</label>
+                                    <input type="number" class="form-control" id="defense" name="defense"
+                                        placeholder="Defense Points" required value="{{ old('defense') }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="is_legendary" class="form-label">Legendary</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="is_legendary"
+                                            name="is_legendary" value="1"
+                                            {{ old('is_legendary') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="is_legendary">
+                                            Legendary Pokemon?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="d-flex justify-content-between mb-4">
                                 <a href="{{ route('pokemon.index') }}" class="btn btn-secondary">Back</a>
                                 <button type="submit" class="btn btn-success">Submit</button>
