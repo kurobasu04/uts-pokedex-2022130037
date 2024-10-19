@@ -36,8 +36,10 @@
                             <div class="col-md-4 mb-4">
                                 <div class="card text-center">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#pokemonModal{{ $poke->id }}">
-                                        <img src="{{ $poke->photo ? asset('storage/' . $poke->photo) : 'https://placehold.co/200' }}"
+                                        <!-- Menampilkan foto Pokémon atau placeholder jika kosong -->
+                                        <img src="{{ empty($poke->photo) ? url('https://placehold.co/200') : asset('storage/' . $poke->photo) }}"
                                             class="card-img-top small-image" alt="{{ $poke->name }}">
+
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -52,6 +54,7 @@
                                     </div>
                                 </div>
 
+                                <!-- Modal untuk detail Pokémon -->
                                 <div class="modal fade" id="pokemonModal{{ $poke->id }}" tabindex="-1"
                                     aria-labelledby="pokemonModalLabel{{ $poke->id }}" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -64,8 +67,13 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ $poke->photo ? asset('storage/' . $poke->photo) : 'https://placehold.co/200' }}"
-                                                    class="img-fluid" alt="{{ $poke->name }}">
+                                                <!-- Membungkus gambar dengan hyperlink ke halaman show -->
+                                                <a href="{{ route('pokemon.show', $poke->id) }}">
+                                                    <img src="{{ empty($poke->photo) ? url('https://placehold.co/200') : asset('storage/' . $poke->photo) }}"
+                                                        class="img-fluid"
+                                                        style="max-width: 100%; max-height: 500px; object-fit: cover;"
+                                                        alt="{{ $poke->name }}">
+                                                </a>
 
                                                 <h5>ID: {{ str_pad($poke->id, 4, '0', STR_PAD_LEFT) }}</h5>
                                                 <p><strong>Primary Type:</strong>
